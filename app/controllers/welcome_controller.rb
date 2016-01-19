@@ -78,20 +78,20 @@ class WelcomeController < ApplicationController
           "関東"
         when 3
           "信州・信越"
-	when 4
-	  "東海"
-	when 5
-	  "北陸"
-	when 6
-	  "近畿"
-	when 7
-	  "中国"
-	when 8
-	  "四国"
-	when 9
-	  "九州"
-	when 10
-	  "沖縄"
+        when 4
+          "東海"
+        when 5
+          "北陸"
+        when 6
+          "近畿"
+        when 7
+          "中国"
+        when 8
+          "四国"
+        when 9
+          "九州"
+        when 10
+          "沖縄"
       end
   end
 end
