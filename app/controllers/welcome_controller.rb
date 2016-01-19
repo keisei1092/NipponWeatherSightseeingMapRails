@@ -30,13 +30,25 @@ class WelcomeController < ApplicationController
       "http://guide.travel.co.jp/feed/archive/r10/",
       "http://guide.travel.co.jp/feed/archive/p47/"
     ]
+    weather_string = case params[:weather]
+      when "sunny"
+        "晴"
+      when "cloudy"
+        "曇"
+      when "rainy"
+        "雨"
+      when "snowy"
+        "雪"
+      else
+        "晴"
+      end
     @data = []
     weather_feeds.each_with_index do |feed_url, i|
       weather_feed = SimpleRSS.parse open(weather_feeds[i])
       weather_feed.items.each do |item|
         if item.title.force_encoding("UTF-8").include?("土")
-          if item.description.force_encoding("UTF-8").include?("雪")
-	    elem = {}
+          if item.description.force_encoding("UTF-8").include?(weather_string)
+            elem = {}
             elem["area"] = convert_number_to_area_string(i)
 	    elem["info"] = {}
 	    elem["info"]["title"] = []
