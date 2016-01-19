@@ -14,7 +14,12 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <p>週末の天気が雪の地域の観光情報を表示しています</p>
+  <%= form_tag "/", :method => 'get', :class => 'form-inline' do %>
+    週末の天気が
+    <%= select_tag(:weather, options_for_select([['晴', 'sunny'], ['曇', 'cloudy'], ['雨', 'rainy'], ['雪', 'snowy']]), :class => 'form-control') %>
+    の地域の観光情報を表示します
+    <%= submit_tag "GO", :class => 'form-control' %>
+  <% end %>
   <% @data.each do |data| %>
     <div class="page-header">
       <h2>
