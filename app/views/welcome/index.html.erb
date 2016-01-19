@@ -42,6 +42,9 @@
       </div>
     <% end %>
   <% end %>
+  <% if @data.empty? %>
+    <p class="bg-danger" style="padding: 15px; margin: 10px 0; color: #333;">該当する地域はありませんでした。</p>
+  <% end %>
   <hr>
   <p class="text-center">
     &copy; 2015 <a href="http://twitter.com/keisei_1092" target="_blank">keisei</a>
