@@ -50,15 +50,15 @@ class WelcomeController < ApplicationController
           if item.description.force_encoding("UTF-8").include?(weather_string)
             elem = {}
             elem["area"] = convert_number_to_area_string(i)
-	    elem["info"] = {}
-	    elem["info"]["title"] = []
-	    elem["info"]["description"] = []
-	    elem["info"]["link"] = []
-	    sight_feed = SimpleRSS.parse open(sight_feeds[i])
-	    10.times do |j|
-	      elem["info"]["title"].push sight_feed.items[j].title.force_encoding("UTF-8")
-	      elem["info"]["description"].push sight_feed.items[j].description.force_encoding("UTF-8")
-	      elem["info"]["link"].push sight_feed.items[j].link.force_encoding("UTF-8")
+            elem["info"] = {}
+            elem["info"]["title"] = []
+            elem["info"]["description"] = []
+            elem["info"]["link"] = []
+            sight_feed = SimpleRSS.parse open(sight_feeds[i])
+            10.times do |j|
+              elem["info"]["title"].push sight_feed.items[j].title.force_encoding("UTF-8").chomp("｜トラベルjp＜たびねす＞")
+              elem["info"]["description"].push sight_feed.items[j].description.force_encoding("UTF-8")
+              elem["info"]["link"].push sight_feed.items[j].link.force_encoding("UTF-8")
             end
             @data.push elem
           end
