@@ -4,8 +4,6 @@ require 'open-uri'
 
 class WelcomeController < ApplicationController
   def index
-    puts "hello"
-    p "hello"
     weather_feeds = [
         "http://rss.weather.yahoo.co.jp/rss/days/1400.xml",
         "http://rss.weather.yahoo.co.jp/rss/days/3410.xml",
@@ -38,7 +36,6 @@ class WelcomeController < ApplicationController
       weather_feed.items.each do |item|
         if item.title.force_encoding("UTF-8").include?("土")
           if item.description.force_encoding("UTF-8").include?("雪")
-	    puts "雪だーーーーーーーーーー"
 	    elem = {}
             elem["area"] = convert_number_to_area_string(i)
 	    elem["info"] = {}
